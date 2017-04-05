@@ -8,3 +8,5 @@ RUN apk add -U tzdata \
 COPY conf/upstream.conf /etc/nginx/conf.d/upstream.conf
 COPY conf/php-fpm.conf /etc/nginx/conf.d/php-fpm.conf
 
+# remove default config from base image
+RUN rm /etc/nginx/conf.d/default.conf
