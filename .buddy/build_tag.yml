@@ -1,0 +1,20 @@
+- pipeline: "Build Tag"
+  on: "EVENT"
+  events:
+  - type: "PUSH"
+    refs:
+    - "refs/tags/*"
+  priority: "NORMAL"
+  fetch_all_refs: true
+  trigger_conditions:
+  - trigger_condition: "ALWAYS"
+  actions:
+  - action: "Build Docker image"
+    type: "DOCKERFILE"
+    region: "eu-west-1"
+    docker_image_tag: "$BUDDY_EXECUTION_TAG"
+    dockerfile_path: "Dockerfile"
+    repository: "cf-nginx-microservice"
+    trigger_conditions:
+    - trigger_condition: "ALWAYS"
+    integration_hash: "5dde343a422f5a6e5bb69331"
