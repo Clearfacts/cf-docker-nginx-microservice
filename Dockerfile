@@ -1,4 +1,4 @@
-FROM nginx:1.11-alpine
+FROM nginx:1.23-alpine
 
 RUN apk add -U tzdata \
   && cp /usr/share/zoneinfo/Europe/Brussels /etc/localtime \
