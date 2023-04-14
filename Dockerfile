@@ -5,6 +5,7 @@ RUN apk add -U tzdata \
   && echo "Europe/Brussels" >  /etc/timezone \
   && apk del tzdata
 
+COPY conf/nginx.conf /etc/nginx/nginx.conf
 COPY conf/upstream.conf /etc/nginx/conf.d/upstream.conf
 COPY conf/php-fpm.conf /etc/nginx/conf.d/php-fpm.conf
 
