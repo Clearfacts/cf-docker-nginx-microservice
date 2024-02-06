@@ -9,7 +9,7 @@ COPY conf/nginx.conf /etc/nginx/nginx.conf
 COPY conf/upstream.conf /etc/nginx/conf.d/upstream.conf
 COPY conf/php-fpm.conf /etc/nginx/conf.d/php-fpm.conf
 
-COPY www /var/www
+COPY www /etc/nginx/html
 
 # remove default config from base image
 RUN rm /etc/nginx/conf.d/default.conf \
