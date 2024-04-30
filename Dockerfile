@@ -1,4 +1,4 @@
-FROM nginx:1.25-alpine
+FROM nginx:1.25-alpine as default
 
 RUN apk add -U tzdata \
   && cp /usr/share/zoneinfo/Europe/Brussels /etc/localtime \
@@ -13,3 +13,10 @@ COPY conf/php-fpm.conf /etc/nginx/conf.d/php-fpm.conf
 RUN rm /etc/nginx/conf.d/default.conf \
   # test nginx configuration
   && nginx -t
+
+FROM default as long
+
+COPY conf/php-fpm-long.conf /etc/nginx/conf.d/php-fpm.conf
+
+# test nginx configuration
+RUN nginx -t
