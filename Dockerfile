@@ -16,7 +16,8 @@ RUN rm /etc/nginx/conf.d/default.conf \
 
 FROM default as long
 
-COPY conf/php-fpm-long.conf /etc/nginx/conf.d/php-fpm.conf
+RUN sed -i -E 's/(_timeout)(.*)(60)/\1\2300/' /etc/nginx/conf.d/php-fpm.conf && \
+    cat /etc/nginx/conf.d/php-fpm.conf | grep timeout
 
 # test nginx configuration
 RUN nginx -t
