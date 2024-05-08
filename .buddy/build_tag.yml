@@ -14,7 +14,6 @@
       region: "eu-west-1"
       docker_image_tag: "$BUDDY_EXECUTION_TAG"
       repository: "cf-nginx-microservice"
-      buildkit: false
       trigger_conditions:
         - trigger_condition: "ALWAYS"
       target_platform: ""
@@ -26,7 +25,6 @@
       region: "eu-west-1"
       docker_image_tag: "$BUDDY_EXECUTION_TAG-long"
       repository: "cf-nginx-microservice"
-      buildkit: false
       trigger_conditions:
         - trigger_condition: "ALWAYS"
       target_platform: ""
