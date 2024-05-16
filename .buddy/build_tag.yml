@@ -10,10 +10,21 @@
   actions:
     - action: "Build Docker image"
       type: "DOCKERFILE"
+      target: "default"
       region: "eu-west-1"
       docker_image_tag: "$BUDDY_EXECUTION_TAG"
       repository: "cf-nginx-microservice"
-      buildkit: false
+      trigger_conditions:
+        - trigger_condition: "ALWAYS"
+      target_platform: ""
+      integration_hash: "5dde343a422f5a6e5bb69331"
+      run_next_parallel: true
+    - action: "Build Docker image (long)"
+      type: "DOCKERFILE"
+      target: "long"
+      region: "eu-west-1"
+      docker_image_tag: "$BUDDY_EXECUTION_TAG-long"
+      repository: "cf-nginx-microservice"
       trigger_conditions:
         - trigger_condition: "ALWAYS"
       target_platform: ""
